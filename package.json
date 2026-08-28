@@ -4,7 +4,8 @@
   "private": true,
   "description": "Marketing website for AI Success Pte. Ltd. — Smart Loans. Real Growth.",
   "scripts": {
-    "build": "node build.js",
-    "dev": "node build.js && python3 -m http.server 8080"
+    "build": "OUT_DIR=dist node build.js",
+    "dev": "node build.js && python3 -m http.server 8080",
+    "build:root": "node build.js"
   }
 }

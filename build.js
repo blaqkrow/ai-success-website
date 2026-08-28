@@ -4,7 +4,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = __dirname;
+/* Output to the repo root by default; set OUT_DIR=dist for a clean deploy bundle. */
+const root = process.env.OUT_DIR ? path.join(__dirname, process.env.OUT_DIR) : __dirname;
+fs.mkdirSync(root, { recursive: true });
 const product = require('./build/pages/product.js');
 const productsData = require('./build/pages/products-data.js');
 const { SITE } = require('./build/layout.js');
@@ -42,4 +44,10 @@ fs.writeFileSync(path.join(root, 'sitemap.xml'),
   `\n</urlset>\n`);
 fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
 console.log('  built sitemap.xml, robots.txt');
+
+/* When building into a separate directory, bring the static assets along. */
+if (process.env.OUT_DIR) {
+  fs.cpSync(path.join(__dirname, 'assets'), path.join(root, 'assets'), { recursive: true });
+  console.log('  copied assets/');
+}
 console.log('\nDone — ' + pages.length + ' pages.');
