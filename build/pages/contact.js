@@ -29,7 +29,7 @@ const form = `<section class="section">
               </div>
               <div class="field">
                 <label for="f-phone">Mobile number</label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+65 8123 4567" required>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 9123 4567" required>
               </div>
             </div>
 
@@ -94,7 +94,7 @@ const form = `<section class="section">
           </div>
           <div class="ctile">
             ${icon('chat')}
-            <div><h4>WhatsApp</h4><p>${SITE.whatsapp}<br>Fastest for quick questions.</p></div>
+            <div><h4>WhatsApp</h4><p><a href="${SITE.whatsappHref}" rel="noopener">${SITE.whatsapp}</a><br>Fastest for quick questions.</p></div>
           </div>
           <div class="ctile">
             ${icon('mail')}
@@ -187,7 +187,7 @@ module.exports = L.page({
   file: 'contact.html',
   active: 'contact',
   title: 'Apply Now &amp; Contact Us | AI Success Pte. Ltd. Singapore',
-  description: 'Apply for an SME loan in five minutes or speak to a Singapore-based advisor on 6881 1234. Includes a free repayment estimator for business loans up to S$5 million.',
+  description: 'Apply for an SME loan in five minutes or speak to a Singapore-based advisor on 8857 8585. Includes a free repayment estimator for business loans up to S$5 million.',
   jsonld: {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',

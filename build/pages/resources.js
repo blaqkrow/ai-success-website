@@ -1,6 +1,6 @@
 'use strict';
 const L = require('../layout.js');
-const { icon, tick, arrow, pageHero, ctaBand, acc } = L;
+const { SITE, icon, tick, arrow, pageHero, ctaBand, acc } = L;
 
 const guides = `<section class="section">
     <div class="wrap">
@@ -70,7 +70,7 @@ const glossary = `<section class="section section--surface">
 
 const faq = `<section class="section" id="faq">
     <div class="wrap">
-      <div class="shead"><span class="badge">FAQ</span><h2>Frequently asked questions</h2><p>If your question is not here, call us on 6881 1234 &mdash; a person answers.</p><div class="rule"></div></div>
+      <div class="shead"><span class="badge">FAQ</span><h2>Frequently asked questions</h2><p>If your question is not here, call us on ${SITE.phone} &mdash; a person answers.</p><div class="rule"></div></div>
       <div class="narrow mx-auto">
         <h3 style="margin:32px 0 14px">Applying</h3>
         ${acc('How long does an application take?', '<p>The online form takes about five minutes. Once your documents are uploaded, an indicative decision usually follows within 24 hours on working days. Formal approval and drawdown typically complete within three to seven working days, depending on the facility size and any conditions the lender attaches.</p>')}

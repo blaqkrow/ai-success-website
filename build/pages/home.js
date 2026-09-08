@@ -231,10 +231,10 @@ module.exports = L.page({
     name: SITE.name,
     slogan: SITE.tagline,
     url: SITE.url,
-    telephone: '+65 6881 1234',
+    telephone: '+65 8857 8585',
     email: SITE.email,
     areaServed: 'SG',
-    address: { '@type': 'PostalAddress', streetAddress: '1 Raffles Place, #20-61 One Raffles Place', addressLocality: 'Singapore', postalCode: '048616', addressCountry: 'SG' }
+    address: { '@type': 'PostalAddress', streetAddress: '200 Jln Sultan, #03-31C', addressLocality: 'Singapore', postalCode: '199018', addressCountry: 'SG' }
   },
   body: [hero, why, products, how, results, industries, voices, ctaBand()].join('\n')
 });

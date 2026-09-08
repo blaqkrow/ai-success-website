@@ -3,11 +3,12 @@
 const SITE = {
   name: 'AI Success Pte. Ltd.',
   tagline: 'Smart Loans. Real Growth.',
-  phone: '6881 1234',
-  phoneHref: 'tel:+6568811234',
-  whatsapp: '+65 8123 4567',
-  email: 'enquiry@aisuccess.sg',
-  address: '1 Raffles Place, #20-61 One Raffles Place, Singapore 048616',
+  phone: '8857 8585',
+  phoneHref: 'tel:+6588578585',
+  whatsapp: '+65 8857 8585',
+  whatsappHref: 'https://wa.me/6588578585',
+  email: 'Loan@aisuccesss.com',
+  address: '200 Jln Sultan, #03-31C, Singapore 199018',
   hours: 'Mon–Fri, 9.00am – 6.00pm (SGT)',
   uen: '202412345K',
   url: 'https://aisuccess.sg'
