@@ -6,7 +6,7 @@
 | **Owner** | *unassigned* |
 | **Status** | v1.0 shipped to production; not yet on a customer-facing domain |
 | **Live** | https://ai-success-flax.vercel.app |
-| **Last updated** | 29 August 2026 |
+| **Last updated** | 9 September 2026 |
 
 > **Read this first.** v1.0 was built from a supplied logo and a single homepage
 > mockup. Every rate, statistic, case study and contact detail on the live site is
@@ -131,7 +131,10 @@ production.
 | D2 | **High** | Canonical tags, `og:url` and `sitemap.xml` all point at `https://aisuccess.sg`, which does not serve this site. Search engines are being told the canonical version lives at a URL that does not resolve to this content. Either connect the domain or change `SITE.url` in `build/layout.js`. |
 | D3 | **High** | All rates, statistics, case studies, the phone number and the UEN are placeholders, on a publicly reachable page for a financial services firm. |
 | D4 | Medium | No analytics of any kind. No goal, funnel, or channel in this document can currently be measured. |
-| D5 | Low | The project is not connected to a git remote, so deploys are manual and there is no review or rollback path. |
+| D5 | Low | The Vercel project is not linked to the GitHub repo, so deploys are manual and there is no preview/rollback path. |
+| D6 | **High** | The homepage names fifteen financial institutions (DBS, UOB, HSBC, Maybank, …). These are third-party trademarks and the claim of scheme participation is unverified. They are currently rendered as **text, not logos** — no logo files were supplied and none should be copied from a competitor's site. Confirm the participant list against Enterprise Singapore's published source, and obtain each institution's permission (or the scheme's brand guidance) before using real logos. |
+| D7 | **High** | The government-scheme figures on the homepage — 70% risk-share to March 2027, the Nov 2026 SME Cash Grant, the S$500/S$2,500 amounts — were transcribed from a competitor's page and have not been verified against Enterprise Singapore. Publishing incorrect scheme terms on a financing site is a real liability. Verify before promoting. |
+| D8 | Low | The company video section renders a placeholder. No video file was supplied; drop it at `assets/video/company.mp4` and set `video.src` in both language packs. |
 
 ---
 
@@ -174,7 +177,7 @@ do its job. **P2** is the next horizon.
 | R18 | Eligibility pre-qualifier — the five-question tool promised on `/resources` and not yet built. |
 | R19 | WhatsApp click-to-chat as a first-class entry point. |
 | R20 | CMS or structured content source, once someone other than a developer needs to edit copy. |
-| R21 | Simplified Chinese translation, if the audience data supports it. |
+| ~~R21~~ | ~~Simplified Chinese translation.~~ **Shipped 9 Sep 2026** — full site at `/zh`, EN/中文 toggle, hreflang alternates. Translation is machine-produced and should get a native review before it is promoted. |
 | R22 | Enhance the estimator to show effective interest rate alongside flat rate — the exact comparison the `/resources` guides argue is the only honest one. |
 
 ---

@@ -421,3 +421,126 @@ td strong{color:var(--ink)}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ============================================================
+   Additions: i18n chrome, hero calculator, scheme sections,
+   financing institutions, video
+   ============================================================ */
+
+/* ---------- Skip link ---------- */
+.skip{position:absolute;left:-9999px;top:8px;z-index:300;background:#fff;color:var(--ink);
+  padding:12px 20px;border-radius:10px;font-weight:700;box-shadow:var(--shadow-lg)}
+.skip:focus{left:12px}
+
+/* ---------- Language toggle ---------- */
+.langtog{display:inline-flex;align-items:center;gap:2px;margin-left:10px;padding:3px;
+  background:var(--surface);border:1px solid var(--line);border-radius:100px;flex:none}
+.langtog__i{display:block;padding:6px 13px;border-radius:100px;font-size:.75rem;font-weight:800;
+  letter-spacing:.05em;color:var(--muted);line-height:1;transition:background .2s,color .2s}
+.langtog__i:hover{color:var(--blue-600)}
+.langtog__i.is-on{background:var(--blue-600);color:#fff;box-shadow:0 3px 10px rgba(18,99,224,.32)}
+
+/* ---------- Hero loan calculator ---------- */
+.calccard{background:#fff;border-radius:var(--radius-lg);padding:30px 28px;
+  box-shadow:0 30px 70px rgba(0,0,0,.34);border:1px solid rgba(255,255,255,.6)}
+.calccard__h{font-family:var(--sans);font-size:1.32rem;font-weight:800;text-transform:none;
+  letter-spacing:-.01em;color:var(--ink);margin:0 0 4px;line-height:1.2}
+.calccard__sub{font-size:.92rem;color:var(--muted);margin:0 0 24px}
+.calcrow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px}
+.calcrow label{font-size:.88rem;font-weight:600;color:var(--body)}
+.calcrow output{font-size:1.02rem;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.rng{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:5px;
+  background:linear-gradient(90deg,var(--blue-600) 0%,var(--blue-600) var(--pct,50%),var(--line) var(--pct,50%),var(--line) 100%);
+  outline:none;margin:0 0 22px;cursor:pointer}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-500),var(--blue-700));border:3px solid #fff;cursor:pointer;
+  box-shadow:0 3px 10px rgba(18,99,224,.45)}
+.rng::-moz-range-thumb{width:20px;height:20px;border-radius:50%;
+  background:var(--blue-600);border:3px solid #fff;cursor:pointer;box-shadow:0 3px 10px rgba(18,99,224,.45)}
+.rng:focus-visible{outline:3px solid var(--blue-500);outline-offset:4px}
+.calccard__result{text-align:center;padding:20px 16px;border-radius:14px;margin-bottom:18px;
+  background:linear-gradient(160deg,var(--blue-50),#e8f1ff);border:1px solid var(--blue-100)}
+.calccard__rlabel{font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--body)}
+.calccard__amt{font-family:var(--display);font-size:clamp(2.1rem,3.6vw,2.9rem);font-weight:800;
+  color:var(--navy-700);line-height:1.05;margin-top:5px;font-variant-numeric:tabular-nums}
+.calccard__note{font-size:.74rem;color:var(--muted);margin:14px 0 0;line-height:1.55}
+
+/* ---------- Government scheme cards ---------- */
+.govcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;box-shadow:var(--shadow-sm);height:100%}
+.govcard h3{font-size:1.04rem;margin-bottom:4px}
+.govcard__period{font-size:.76rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--blue-600);margin-bottom:14px}
+.govlist{list-style:none;padding:0;margin:0}
+.govlist li{position:relative;padding-left:18px;margin-bottom:10px;font-size:.92rem;line-height:1.6}
+.govlist li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+  background:var(--blue-500)}
+.govlist li:last-child{margin-bottom:0}
+.srcnote{font-size:.79rem;color:var(--muted);line-height:1.6;margin:16px 0 0}
+
+/* ---------- Financing institutions ---------- */
+.fis{list-style:none;padding:0;margin:0;display:grid;
+  grid-template-columns:repeat(5,1fr);gap:14px}
+.fi{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  min-height:92px;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease,border-color .22s}
+.fi:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(43,134,245,.4)}
+.fi__name{font-family:var(--display);font-size:1.16rem;font-weight:700;letter-spacing:.01em;
+  color:var(--navy-700);line-height:1.15;text-transform:uppercase}
+.fi__cn{font-size:.78rem;color:var(--muted);margin-top:4px}
+
+/* ---------- Video ---------- */
+.videobox{max-width:940px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);background:var(--navy-800);aspect-ratio:16/9}
+.videobox video{width:100%;height:100%;object-fit:cover;display:block}
+.videobox__ph{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:34px 26px;color:#b8cbe8;
+  background:linear-gradient(150deg,var(--navy-900),var(--navy-700))}
+.videobox__ic{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px;
+  background:rgba(43,134,245,.18);border:1px solid rgba(87,165,255,.45)}
+.videobox__ic svg{width:38px;height:38px;stroke:#8ecbff;fill:none;stroke-width:1.5}
+.videobox__t{font-size:1.06rem;font-weight:700;color:#fff;margin:0 0 8px}
+.videobox__n{font-size:.85rem;margin:0;max-width:46ch}
+.videobox__n code{background:rgba(255,255,255,.1);padding:2px 7px;border-radius:5px;
+  font-size:.92em;color:#d6e6ff}
+
+/* ---------- Small shared bits ---------- */
+.cardlink{margin-top:14px;color:var(--blue-600);font-weight:800;font-size:.82rem;
+  letter-spacing:.08em;text-transform:uppercase}
+.eyebrow-flat{font-size:.82rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--blue-600);margin-bottom:26px}
+
+/* ---------- Simplified Chinese ---------- */
+.lang-zh{
+  --display:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+}
+.lang-zh h1,.lang-zh h2{text-transform:none;letter-spacing:.01em;font-weight:900;line-height:1.25}
+.lang-zh .logo__name,.lang-zh .fi__name{font-family:"Barlow Condensed",sans-serif}
+.lang-zh .logo__tag,.lang-zh .eyebrow,.lang-zh .badge,.lang-zh .trio__t,.lang-zh .stat__l,
+.lang-zh .step h4,.lang-zh .calccard__rlabel,.lang-zh .govcard__period,.lang-zh .field label,
+.lang-zh .nav__link,.lang-zh .footer h5,.lang-zh .eyebrow-flat,.lang-zh .cardlink{letter-spacing:.04em}
+.lang-zh .btn{letter-spacing:.04em}
+.lang-zh .offercard__amt,.lang-zh .calccard__amt,.lang-zh .stat__n,.lang-zh .hero h1{
+  font-family:"Barlow Condensed","Noto Sans SC",sans-serif}
+.lang-zh .hero h1{letter-spacing:.02em;line-height:1.18}
+.lang-zh body,.lang-zh p{line-height:1.85}
+.lang-zh .quote p{font-style:normal}
+.lang-zh .tcard blockquote{font-style:normal}
+
+/* ---------- Responsive additions ---------- */
+@media (max-width:1080px){
+  .fis{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:960px){
+  .langtog{margin:14px 0 0;align-self:flex-start}
+  .fis{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:680px){
+  .fis{grid-template-columns:repeat(2,1fr);gap:10px}
+  .fi{min-height:78px;padding:13px 9px}
+  .fi__name{font-size:1rem}
+  .calccard{padding:24px 20px}
+  .videobox{aspect-ratio:4/3}
+}
+.caselabel{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-600);margin-bottom:4px}

@@ -6,11 +6,15 @@
 <title>Apply Now &amp; Contact Us | AI Success Pte. Ltd. Singapore</title>
 <meta name="description" content="Apply for an SME loan in five minutes or speak to a Singapore-based advisor on 8857 8585. Includes a free repayment estimator for business loans up to S$5 million.">
 <link rel="canonical" href="https://aisuccess.sg/contact">
+<link rel="alternate" hreflang="en-SG" href="https://aisuccess.sg/contact">
+<link rel="alternate" hreflang="zh-Hans" href="https://aisuccess.sg/zh/contact">
+<link rel="alternate" hreflang="x-default" href="https://aisuccess.sg/contact">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AI Success Pte. Ltd.">
 <meta property="og:title" content="Apply Now &amp; Contact Us | AI Success Pte. Ltd. Singapore">
 <meta property="og:description" content="Apply for an SME loan in five minutes or speak to a Singapore-based advisor on 8857 8585. Includes a free repayment estimator for business loans up to S$5 million.">
 <meta property="og:url" content="https://aisuccess.sg/contact">
+<meta property="og:locale" content="en_SG">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#04102b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -18,14 +22,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact AI Success Pte. Ltd.","url":"https://aisuccess.sg/contact"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Apply Now & Contact Us | AI Success Pte. Ltd. Singapore","url":"https://aisuccess.sg/contact"}</script>
 </head>
 <body>
-<a class="skip" href="#main" style="position:absolute;left:-9999px;top:0;background:#fff;padding:12px 18px;z-index:200" onfocus="this.style.left='12px'" onblur="this.style.left='-9999px'">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 <header class="header">
   <div class="wrap">
     <div class="header__inner">
-      <a class="logo " href="/" aria-label="AI Success Pte. Ltd. — home">
+      <a class="logo" href="/" aria-label="AI Success Pte. Ltd.">
         <svg viewBox="0 0 62 46" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="lgA" x1="0" y1="1" x2="1" y2="0">
@@ -47,9 +51,7 @@
       <nav class="nav" id="nav" aria-label="Primary">
         <div class="nav__item"><a class="nav__link" href="/">Home</a></div>
         <div class="nav__item has-drop">
-          <a class="nav__link" href="/loan-solutions">Loan Solutions
-            <svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>
-          </a>
+          <a class="nav__link" href="/loan-solutions">Loan Solutions<svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg></a>
           <div class="drop">
             <a href="/loan-solutions">All Loan Solutions<span>Compare every product</span></a>
             <a href="/working-capital-loan">Working Capital Loan<span>Cover day-to-day cash needs</span></a>
@@ -61,9 +63,7 @@
         <div class="nav__item"><a class="nav__link" href="/why-us">Why Us</a></div>
         <div class="nav__item"><a class="nav__link" href="/success-stories">Success Stories</a></div>
         <div class="nav__item has-drop">
-          <a class="nav__link" href="/resources">Resources
-            <svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>
-          </a>
+          <a class="nav__link" href="/resources">Resources<svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg></a>
           <div class="drop">
             <a href="/resources">Guides &amp; Tools<span>SME financing know-how</span></a>
             <a href="/resources#faq">FAQ<span>Answers to common questions</span></a>
@@ -71,7 +71,10 @@
             <a href="/contact">Talk to an Advisor<span>Get a same-day callback</span></a>
           </div>
         </div>
-        <a class="btn btn--blue btn--sm" href="/contact" style="margin-left:10px">Apply Now</a>
+        <div class="langtog" role="group" aria-label="Language">
+          <span class="langtog__i is-on" aria-current="true">EN</span><a class="langtog__i" href="/zh/contact" hreflang="zh-Hans">中文</a>
+        </div>
+        <a class="btn btn--blue btn--sm" href="/contact">Apply Now</a>
       </nav>
       <button class="burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
@@ -125,39 +128,18 @@
               </div>
               <div class="field">
                 <label for="f-trading">Years trading</label>
-                <select id="f-trading" name="trading" required>
-                  <option value="">Select&hellip;</option>
-                  <option>Less than 6 months</option>
-                  <option>6 &ndash; 12 months</option>
-                  <option>1 &ndash; 3 years</option>
-                  <option>3 &ndash; 5 years</option>
-                  <option>More than 5 years</option>
-                </select>
+                <select id="f-trading" name="trading" required><option value="">Select&hellip;</option><option>Less than 6 months</option><option>6 &ndash; 12 months</option><option>1 &ndash; 3 years</option><option>3 &ndash; 5 years</option><option>More than 5 years</option></select>
               </div>
             </div>
 
             <div class="field--row">
               <div class="field">
                 <label for="f-facility">Facility of interest</label>
-                <select id="f-facility" name="facility" required>
-                  <option value="">Select&hellip;</option>
-                  <option>Working Capital Loan</option>
-                  <option>Business Term Loan</option>
-                  <option>Invoice Financing</option>
-                  <option>Equipment Financing</option>
-                  <option>Not sure &mdash; please advise</option>
-                </select>
+                <select id="f-facility" name="facility" required><option value="">Select&hellip;</option><option>Working Capital Loan</option><option>Business Term Loan</option><option>Invoice Financing</option><option>Equipment Financing</option><option>Not sure &mdash; please advise</option></select>
               </div>
               <div class="field">
                 <label for="f-amount">Amount required</label>
-                <select id="f-amount" name="amount" required>
-                  <option value="">Select&hellip;</option>
-                  <option>Under S$100,000</option>
-                  <option>S$100,000 &ndash; S$300,000</option>
-                  <option>S$300,000 &ndash; S$500,000</option>
-                  <option>S$500,000 &ndash; S$1 million</option>
-                  <option>Above S$1 million</option>
-                </select>
+                <select id="f-amount" name="amount" required><option value="">Select&hellip;</option><option>Under S$100,000</option><option>S$100,000 &ndash; S$300,000</option><option>S$300,000 &ndash; S$500,000</option><option>S$500,000 &ndash; S$1 million</option><option>Above S$1 million</option></select>
               </div>
             </div>
 
@@ -175,7 +157,7 @@
         <div class="reveal stack">
           <div class="ctile">
             <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.4 19.4 4.6 13.6 4 5.7A2.5 2.5 0 0 1 6.5 3Z"/></svg>
-            <div><h4>Call us</h4><p><a href="tel:+6588578585">8857 8585</a><br>Mon–Fri, 9.00am – 6.00pm (SGT)</p></div>
+            <div><h4>Call us</h4><p><a href="tel:+6588578585">8857 8585</a><br>Mon&ndash;Fri, 9.00am &ndash; 6.00pm (SGT)</p></div>
           </div>
           <div class="ctile">
             <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.5-5.4A8.5 8.5 0 1 1 21 12Z"/></svg>
@@ -183,7 +165,7 @@
           </div>
           <div class="ctile">
             <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <div><h4>Email</h4><p><a href="mailto:Loan@aisuccesss.com">Loan@aisuccesss.com</a><br>Replies within one working day.</p></div>
+            <div><h4>Email</h4><p><a href="mailto:loan@sgvvip.com">loan@sgvvip.com</a><br>Replies within one working day.</p></div>
           </div>
           <div class="ctile">
             <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5S4.5 15.4 4.5 10a7.5 7.5 0 0 1 15 0c0 5.4-7.5 11.5-7.5 11.5Z"/><circle cx="12" cy="10" r="2.8"/></svg>
@@ -245,7 +227,7 @@
               <div id="calc-total" style="font-family:var(--display);font-size:1.5rem;font-weight:800;color:#fff;margin-top:4px">S$154,320</div>
             </div>
           </div>
-          <p style="font-size:.78rem;color:#8fb0dd;margin:20px 0 0">Indicative only and not an offer of credit. Your actual rate depends on credit assessment and is confirmed in writing.</p>
+          <p class="srcnote" style="color:#8fb0dd">Indicative only and not an offer of credit. Your actual rate depends on credit assessment and is confirmed in writing.</p>
         </div>
       </div>
     </div>
@@ -290,7 +272,7 @@
     <div class="wrap">
       <div class="footer__grid">
         <div>
-          <a class="logo " href="/" aria-label="AI Success Pte. Ltd. — home">
+          <a class="logo" href="/" aria-label="AI Success Pte. Ltd.">
         <svg viewBox="0 0 62 46" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="lgA" x1="0" y1="1" x2="1" y2="0">
@@ -344,7 +326,8 @@
           <h5>Stay Connected</h5>
           <ul>
             <li><a href="tel:+6588578585">8857 8585</a></li>
-            <li><a href="mailto:Loan@aisuccesss.com">Loan@aisuccesss.com</a></li>
+            <li><a href="https://wa.me/6588578585" rel="noopener">WhatsApp +65 8857 8585</a></li>
+            <li><a href="mailto:loan@sgvvip.com">loan@sgvvip.com</a></li>
             <li style="max-width:30ch">200 Jln Sultan, #03-31C, Singapore 199018</li>
           </ul>
           <div class="social">

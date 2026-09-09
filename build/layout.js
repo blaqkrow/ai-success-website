@@ -7,12 +7,30 @@ const SITE = {
   phoneHref: 'tel:+6588578585',
   whatsapp: '+65 8857 8585',
   whatsappHref: 'https://wa.me/6588578585',
-  email: 'Loan@aisuccesss.com',
+  email: 'loan@sgvvip.com',
   address: '200 Jln Sultan, #03-31C, Singapore 199018',
-  hours: 'Mon–Fri, 9.00am – 6.00pm (SGT)',
   uen: '202412345K',
   url: 'https://aisuccess.sg'
 };
+
+const LANGS = ['en', 'zh'];
+
+/* Language-neutral route for every page. The zh build prefixes these with /zh. */
+const ROUTES = {
+  home: '/',
+  loans: '/loan-solutions',
+  workingCapital: '/working-capital-loan',
+  termLoan: '/business-term-loan',
+  invoice: '/invoice-financing',
+  equipment: '/equipment-financing',
+  why: '/why-us',
+  stories: '/success-stories',
+  resources: '/resources',
+  contact: '/contact'
+};
+
+/* Prefix a route for the given language. */
+const href = (lang, route) => (lang === 'zh' ? (route === '/' ? '/zh/' : '/zh' + route) : route);
 
 /* ---------- Logo ---------- */
 const LOGO = `<svg viewBox="0 0 62 46" aria-hidden="true" focusable="false">
@@ -29,11 +47,11 @@ const LOGO = `<svg viewBox="0 0 62 46" aria-hidden="true" focusable="false">
   <path d="M51.2 3.2l1.9 4.3 4.7.5-3.5 3.2 1 4.6-4.1-2.4-4.1 2.4 1-4.6-3.5-3.2 4.7-.5 1.9-4.3Z" fill="#ffc20e"/>
 </svg>`;
 
-const brandBlock = (extraClass = '') => `<a class="logo ${extraClass}" href="/" aria-label="${SITE.name} — home">
+const brandBlock = (lang, tagline) => `<a class="logo" href="${href(lang, ROUTES.home)}" aria-label="${SITE.name}">
         ${LOGO}
         <span class="logo__txt">
           <span class="logo__name">AI Success</span>
-          <span class="logo__tag">${SITE.tagline}</span>
+          <span class="logo__tag">${tagline}</span>
         </span>
       </a>`;
 
@@ -58,7 +76,6 @@ const I = {
   building: '<path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 10h3a2 2 0 0 1 2 2v9"/><path d="M8 7h3M8 11h3M8 15h3"/>',
   invoice: '<path d="M6 2.5h12v19l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4-2 1.4v-19Z"/><path d="M9 7.5h6M9 11h6M9 14.5h3"/>',
   gear: '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M21.5 12h-2.6M5.1 12H2.5M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8M18.7 18.7l-1.8-1.8M7.1 7.1 5.3 5.3"/>',
-  bridge: '<path d="M2.5 17h19M5 17V9M19 17V9"/><path d="M2.5 11a7 7 0 0 1 19 0"/><path d="M9.5 17v-4M14.5 17v-4"/>',
   utensils: '<path d="M5 2.5v7a2.5 2.5 0 0 0 5 0v-7M7.5 12v9.5"/><path d="M16.5 2.5c-1.6 1.4-2.5 3.4-2.5 5.6V13h4V2.5Zm1.5 10.5v8.5"/>',
   chip: '<rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 2.5v3M14 2.5v3M10 18.5v3M14 18.5v3M2.5 10h3M2.5 14h3M18.5 10h3M18.5 14h3"/>',
   leaf: '<path d="M20.5 3.5c0 9-5 14-11 14a5.5 5.5 0 0 1-5.5-5.5c0-6 5-8.5 16.5-8.5Z"/><path d="M4 20.5c2.5-5 6.5-9 12-11.5"/>',
@@ -76,6 +93,9 @@ const I = {
   flag: '<path d="M5 21V3.5h10.5l-1.5 4 1.5 4H5"/><path d="M5 3.5V21"/>',
   lock: '<rect x="4.5" y="10" width="15" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/><path d="M12 14.5v2.5"/>',
   globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.7 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.7-3.9-9S9.4 5.6 12 3Z"/>',
+  bank: '<path d="M3 9.5 12 4l9 5.5"/><path d="M4.5 9.5v9M9 9.5v9M15 9.5v9M19.5 9.5v9M2.5 21h19"/>',
+  gift: '<rect x="3" y="8.5" width="18" height="4" rx="1"/><path d="M4.5 12.5V21h15v-8.5M12 8.5V21"/><path d="M12 8.5S10.5 3 8 3a2.5 2.5 0 0 0 0 5.5h4Zm0 0S13.5 3 16 3a2.5 2.5 0 0 1 0 5.5h-4Z"/>',
+  play: '<circle cx="12" cy="12" r="9.5"/><path d="M10 8.5v7l6-3.5-6-3.5Z"/>',
   sparkle: '<path d="M12 2.5 14 9l6.5 2-6.5 2-2 6.5-2-6.5L3.5 11 10 9l2-6.5Z"/><path d="M19 3v3M17.5 4.5h3"/>'
 };
 const icon = (name, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[name] || ''}</svg>`;
@@ -83,59 +103,60 @@ const tick = `<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="cu
 const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>`;
 const phoneIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I.phone}</svg>`;
 
-/* ---------- Navigation ---------- */
-const LOAN_PAGES = [
-  ['/working-capital-loan', 'Working Capital Loan', 'Cover day-to-day cash needs'],
-  ['/business-term-loan', 'Business Term Loan', 'Lump sum for bigger moves'],
-  ['/invoice-financing', 'Invoice Financing', 'Unlock cash tied up in invoices'],
-  ['/equipment-financing', 'Equipment Financing', 'Fund machinery and vehicles']
-];
+/* ---------- Language toggle ---------- */
+function langToggle(lang, route) {
+  return `<div class="langtog" role="group" aria-label="Language">
+          ${LANGS.map((l) => {
+            const active = l === lang;
+            const label = l === 'en' ? 'EN' : '中文';
+            return active
+              ? `<span class="langtog__i is-on" aria-current="true">${label}</span>`
+              : `<a class="langtog__i" href="${href(l, route)}" hreflang="${l === 'zh' ? 'zh-Hans' : 'en'}">${label}</a>`;
+          }).join('')}
+        </div>`;
+}
 
-function nav(active) {
+/* ---------- Navigation ---------- */
+function nav(active, t, lang, route) {
   const on = (slug) => (active === slug ? ' is-active' : '');
-  const drop = LOAN_PAGES.map(([h, t, s]) => `<a href="${h}">${t}<span>${s}</span></a>`).join('\n            ');
-  return `<nav class="nav" id="nav" aria-label="Primary">
-        <div class="nav__item"><a class="nav__link${on('home')}" href="/">Home</a></div>
+  const caret = `<svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>`;
+  const drop = t.loanPages.map((p) => `<a href="${href(lang, p.route)}">${p.title}<span>${p.sub}</span></a>`).join('\n            ');
+  return `<nav class="nav" id="nav" aria-label="${t.nav.ariaPrimary}">
+        <div class="nav__item"><a class="nav__link${on('home')}" href="${href(lang, ROUTES.home)}">${t.nav.home}</a></div>
         <div class="nav__item has-drop">
-          <a class="nav__link${on('loans')}" href="/loan-solutions">Loan Solutions
-            <svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>
-          </a>
+          <a class="nav__link${on('loans')}" href="${href(lang, ROUTES.loans)}">${t.nav.loans}${caret}</a>
           <div class="drop">
-            <a href="/loan-solutions">All Loan Solutions<span>Compare every product</span></a>
+            <a href="${href(lang, ROUTES.loans)}">${t.nav.allLoans}<span>${t.nav.allLoansSub}</span></a>
             ${drop}
           </div>
         </div>
-        <div class="nav__item"><a class="nav__link${on('why')}" href="/why-us">Why Us</a></div>
-        <div class="nav__item"><a class="nav__link${on('stories')}" href="/success-stories">Success Stories</a></div>
+        <div class="nav__item"><a class="nav__link${on('why')}" href="${href(lang, ROUTES.why)}">${t.nav.why}</a></div>
+        <div class="nav__item"><a class="nav__link${on('stories')}" href="${href(lang, ROUTES.stories)}">${t.nav.stories}</a></div>
         <div class="nav__item has-drop">
-          <a class="nav__link${on('resources')}" href="/resources">Resources
-            <svg class="nav__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>
-          </a>
+          <a class="nav__link${on('resources')}" href="${href(lang, ROUTES.resources)}">${t.nav.resources}${caret}</a>
           <div class="drop">
-            <a href="/resources">Guides &amp; Tools<span>SME financing know-how</span></a>
-            <a href="/resources#faq">FAQ<span>Answers to common questions</span></a>
-            <a href="/contact#calculator">Repayment Estimator<span>Model your monthly cost</span></a>
-            <a href="/contact">Talk to an Advisor<span>Get a same-day callback</span></a>
+            <a href="${href(lang, ROUTES.resources)}">${t.nav.guides}<span>${t.nav.guidesSub}</span></a>
+            <a href="${href(lang, ROUTES.resources)}#faq">${t.nav.faq}<span>${t.nav.faqSub}</span></a>
+            <a href="${href(lang, ROUTES.contact)}#calculator">${t.nav.estimator}<span>${t.nav.estimatorSub}</span></a>
+            <a href="${href(lang, ROUTES.contact)}">${t.nav.advisor}<span>${t.nav.advisorSub}</span></a>
           </div>
         </div>
-        <a class="btn btn--blue btn--sm" href="/contact" style="margin-left:10px">Apply Now</a>
+        ${langToggle(lang, route)}
+        <a class="btn btn--blue btn--sm" href="${href(lang, ROUTES.contact)}">${t.nav.apply}</a>
       </nav>`;
 }
 
 /* ---------- CTA band ---------- */
-const ctaBand = (
-  heading = 'Ready to take your business further?',
-  copy = 'Get a tailored financing recommendation from a Singapore-based advisor — no obligation, no impact on your credit standing.'
-) => `<section class="ctaband circuit">
+const ctaBand = (t, lang, heading, copy) => `<section class="ctaband circuit">
     <div class="wrap">
       <div class="ctaband__in">
         <div>
-          <h2>${heading}</h2>
-          <p>${copy}</p>
+          <h2>${heading || t.cta.h}</h2>
+          <p>${copy || t.cta.p}</p>
         </div>
         <div class="ctaband__btns">
-          <a class="btn btn--gold" href="/contact">Apply Now ${arrow}</a>
-          <a class="btn btn--ghost" href="${SITE.phoneHref}">${phoneIcon} Call ${SITE.phone}</a>
+          <a class="btn btn--gold" href="${href(lang, ROUTES.contact)}">${t.cta.apply} ${arrow}</a>
+          <a class="btn btn--ghost" href="${SITE.phoneHref}">${phoneIcon} ${t.cta.call} ${SITE.phone}</a>
         </div>
       </div>
     </div>
@@ -149,44 +170,46 @@ const social = [
   ['YouTube', 'M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3-5.2 3Z']
 ];
 
-function footer() {
+function footer(t, lang) {
+  const f = t.footer;
   return `<footer class="footer circuit">
     <div class="wrap">
       <div class="footer__grid">
         <div>
-          ${brandBlock()}
-          <p class="footer__about">A Singapore SME financing specialist pairing seasoned credit advisors with smart technology, so growing businesses get funded faster.</p>
-          <p class="footer__about" style="margin-top:12px">UEN ${SITE.uen}</p>
+          ${brandBlock(lang, t.tagline)}
+          <p class="footer__about">${f.about}</p>
+          <p class="footer__about" style="margin-top:12px">${f.uenLabel} ${SITE.uen}</p>
         </div>
         <div>
-          <h5>Loan Solutions</h5>
+          <h5>${f.loanSolutions}</h5>
           <ul>
-            ${LOAN_PAGES.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('\n            ')}
-            <li><a href="/loan-solutions">Compare All</a></li>
+            ${t.loanPages.map((p) => `<li><a href="${href(lang, p.route)}">${p.title}</a></li>`).join('\n            ')}
+            <li><a href="${href(lang, ROUTES.loans)}">${f.compareAll}</a></li>
           </ul>
         </div>
         <div>
-          <h5>Company</h5>
+          <h5>${f.company}</h5>
           <ul>
-            <li><a href="/why-us">Why AI Success</a></li>
-            <li><a href="/success-stories">Success Stories</a></li>
-            <li><a href="/resources">Guides &amp; Tools</a></li>
-            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="${href(lang, ROUTES.why)}">${f.whyUs}</a></li>
+            <li><a href="${href(lang, ROUTES.stories)}">${f.stories}</a></li>
+            <li><a href="${href(lang, ROUTES.resources)}">${f.guidesTools}</a></li>
+            <li><a href="${href(lang, ROUTES.contact)}">${f.contactUs}</a></li>
           </ul>
         </div>
         <div>
-          <h5>Resources</h5>
+          <h5>${f.resources}</h5>
           <ul>
-            <li><a href="/resources">SME Guides</a></li>
-            <li><a href="/resources#faq">FAQ</a></li>
-            <li><a href="/contact#calculator">Repayment Estimator</a></li>
-            <li><a href="/loan-solutions#eligibility">Eligibility</a></li>
+            <li><a href="${href(lang, ROUTES.resources)}">${f.smeGuides}</a></li>
+            <li><a href="${href(lang, ROUTES.resources)}#faq">${f.faq}</a></li>
+            <li><a href="${href(lang, ROUTES.contact)}#calculator">${f.estimator}</a></li>
+            <li><a href="${href(lang, ROUTES.loans)}#eligibility">${f.eligibility}</a></li>
           </ul>
         </div>
         <div>
-          <h5>Stay Connected</h5>
+          <h5>${f.connect}</h5>
           <ul>
             <li><a href="${SITE.phoneHref}">${SITE.phone}</a></li>
+            <li><a href="${SITE.whatsappHref}" rel="noopener">WhatsApp ${SITE.whatsapp}</a></li>
             <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
             <li style="max-width:30ch">${SITE.address}</li>
           </ul>
@@ -196,46 +219,55 @@ function footer() {
         </div>
       </div>
       <div class="footer__bot">
-        <div>&copy; <span data-year>2026</span> ${SITE.name}. All rights reserved.</div>
-        <div>Licensed moneylending is not offered. Financing is arranged with our panel of regulated financial institutions.</div>
+        <div>&copy; <span data-year>2026</span> ${SITE.name}. ${f.rights}</div>
+        <div>${f.disclaimer}</div>
       </div>
     </div>
   </footer>`;
 }
 
 /* ---------- Page shell ---------- */
-function page({ slug, file, title, description, active, body, jsonld }) {
-  const canonical = SITE.url + (file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, ''));
+function page({ file, route, title, description, active, body, jsonld, t, lang }) {
+  const path = href(lang, route);
+  const canonical = SITE.url + path;
+  const htmlLang = lang === 'zh' ? 'zh-Hans-SG' : 'en-SG';
+  const fontFamilies = lang === 'zh'
+    ? 'family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900'
+    : 'family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800';
   return `<!doctype html>
-<html lang="en-SG">
+<html lang="${htmlLang}"${lang === 'zh' ? ' class="lang-zh"' : ''}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${title}</title>
 <meta name="description" content="${description}">
 <link rel="canonical" href="${canonical}">
+<link rel="alternate" hreflang="en-SG" href="${SITE.url}${href('en', route)}">
+<link rel="alternate" hreflang="zh-Hans" href="${SITE.url}${href('zh', route)}">
+<link rel="alternate" hreflang="x-default" href="${SITE.url}${href('en', route)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${SITE.name}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:url" content="${canonical}">
+<meta property="og:locale" content="${lang === 'zh' ? 'zh_CN' : 'en_SG'}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#04102b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?${fontFamilies}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/styles.css">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
 <body>
-<a class="skip" href="#main" style="position:absolute;left:-9999px;top:0;background:#fff;padding:12px 18px;z-index:200" onfocus="this.style.left='12px'" onblur="this.style.left='-9999px'">Skip to content</a>
+<a class="skip" href="#main">${t.common.skip}</a>
 <header class="header">
   <div class="wrap">
     <div class="header__inner">
-      ${brandBlock()}
-      ${nav(active)}
-      <button class="burger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+      ${brandBlock(lang, t.tagline)}
+      ${nav(active, t, lang, route)}
+      <button class="burger" type="button" aria-label="${t.nav.ariaMenu}" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -244,7 +276,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 <main id="main">
 ${body}
 </main>
-${footer()}
+${footer(t, lang)}
 <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
@@ -252,9 +284,9 @@ ${footer()}
 }
 
 /* ---------- Small reusable blocks ---------- */
-const pageHero = (crumb, h1, sub) => `<section class="phero circuit">
+const pageHero = (t, lang, crumb, h1, sub) => `<section class="phero circuit">
     <div class="wrap">
-      <div class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; <span>${crumb}</span></div>
+      <div class="crumbs"><a href="${href(lang, ROUTES.home)}">${t.common.home}</a> &nbsp;/&nbsp; <span>${crumb}</span></div>
       <h1>${h1}</h1>
       <p>${sub}</p>
     </div>
@@ -278,9 +310,12 @@ const acc = (q, a) => `<div class="acc">
       </div>`;
 
 const testimonial = (quote, initials, name, role) => `<div class="tcard reveal">
-          <div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="stars" aria-label="5/5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>${quote}</blockquote>
           <div class="byline"><span class="avatar">${initials}</span><span><strong>${name}</strong><span>${role}</span></span></div>
         </div>`;
 
-module.exports = { SITE, LOGO, LOAN_PAGES, icon, tick, arrow, phoneIcon, page, pageHero, ctaBand, card, featCard, acc, testimonial };
+module.exports = {
+  SITE, LANGS, ROUTES, href, LOGO, icon, tick, arrow, phoneIcon,
+  page, pageHero, ctaBand, card, featCard, acc, testimonial
+};

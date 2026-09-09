@@ -2,7 +2,7 @@
 
 module.exports = [
 {
-  file: 'working-capital-loan.html',
+  file: 'working-capital-loan.html', key: 'workingCapital',
   name: 'Working Capital Loan',
   shortName: 'working capital loans',
   h1: 'Working capital loan',
@@ -50,15 +50,15 @@ module.exports = [
     ['Do I have to say what the money is for?', '<p>We ask, because it helps us match you to the right structure and tenure &mdash; but the funds are not restricted to that purpose once drawn.</p>']
   ],
   related: [
-    ['invoice', 'Invoice Financing', 'If the gap is specifically caused by unpaid invoices, financing them directly is usually cheaper.', '/invoice-financing'],
-    ['building', 'Business Term Loan', 'For a larger sum over a longer horizon, a term loan spreads the cost further.', '/business-term-loan'],
-    ['gear', 'Equipment Financing', 'Buying an asset? Securing the facility against it typically lowers the rate.', '/equipment-financing']
+    ['invoice', 'Invoice Financing', 'If the gap is specifically caused by unpaid invoices, financing them directly is usually cheaper.', 'invoice'],
+    ['building', 'Business Term Loan', 'For a larger sum over a longer horizon, a term loan spreads the cost further.', 'termLoan'],
+    ['gear', 'Equipment Financing', 'Buying an asset? Securing the facility against it typically lowers the rate.', 'equipment']
   ],
   ctaH: 'Need working capital this week?',
   ctaP: 'Check your eligibility in under five minutes. No documents needed for the initial check, and no obligation to proceed.'
 },
 {
-  file: 'business-term-loan.html',
+  file: 'business-term-loan.html', key: 'termLoan',
   name: 'Business Term Loan',
   shortName: 'business term loans',
   h1: 'Business term loan',
@@ -106,15 +106,15 @@ module.exports = [
     ['What happens if my circumstances change mid-term?', '<p>Talk to your advisor early. Restructuring a facility while it is performing is far easier than after a missed payment, and we have arranged repayment holidays and term extensions for clients who came to us in time.</p>']
   ],
   related: [
-    ['cash', 'Working Capital Loan', 'For shorter, smaller cash-flow gaps, a working capital facility is faster and simpler.', '/working-capital-loan'],
-    ['gear', 'Equipment Financing', 'If most of the spend is a single asset, financing it directly is usually cheaper.', '/equipment-financing'],
-    ['invoice', 'Invoice Financing', 'Fund growth from your own receivables rather than adding term debt.', '/invoice-financing']
+    ['cash', 'Working Capital Loan', 'For shorter, smaller cash-flow gaps, a working capital facility is faster and simpler.', 'workingCapital'],
+    ['gear', 'Equipment Financing', 'If most of the spend is a single asset, financing it directly is usually cheaper.', 'equipment'],
+    ['invoice', 'Invoice Financing', 'Fund growth from your own receivables rather than adding term debt.', 'invoice']
   ],
   ctaH: 'Planning something bigger?',
   ctaP: 'Bring us the project. We will size the facility, model two or three structures, and tell you honestly which one costs you least.'
 },
 {
-  file: 'invoice-financing.html',
+  file: 'invoice-financing.html', key: 'invoice',
   name: 'Invoice Financing',
   shortName: 'invoice financing',
   h1: 'Invoice financing',
@@ -162,15 +162,15 @@ module.exports = [
     ['Can a young company qualify?', '<p>Often, yes. Because the assessment weighs your customer&rsquo;s ability to pay heavily, invoice financing is frequently accessible to companies too young for an unsecured term loan.</p>']
   ],
   related: [
-    ['cash', 'Working Capital Loan', 'If the gap is not tied to specific invoices, an unsecured facility may suit better.', '/working-capital-loan'],
-    ['building', 'Business Term Loan', 'For structural investment rather than a timing gap.', '/business-term-loan'],
-    ['gear', 'Equipment Financing', 'Fund the machinery that lets you fulfil the contracts you are financing.', '/equipment-financing']
+    ['cash', 'Working Capital Loan', 'If the gap is not tied to specific invoices, an unsecured facility may suit better.', 'workingCapital'],
+    ['building', 'Business Term Loan', 'For structural investment rather than a timing gap.', 'termLoan'],
+    ['gear', 'Equipment Financing', 'Fund the machinery that lets you fulfil the contracts you are financing.', 'equipment']
   ],
   ctaH: 'Waiting 90 days to get paid?',
   ctaP: 'Send us a sample invoice and your debtor list. We will come back with an advance rate and an all-in monthly cost.'
 },
 {
-  file: 'equipment-financing.html',
+  file: 'equipment-financing.html', key: 'equipment',
   name: 'Equipment Financing',
   shortName: 'equipment financing',
   h1: 'Equipment financing',
@@ -218,9 +218,9 @@ module.exports = [
     ['What happens at the end of the term?', '<p>Under hire purchase, title transfers to you on the final payment. Under a lease, you return the asset, extend the lease, or purchase it at the agreed residual value &mdash; all of which are set out in your agreement at the start.</p>']
   ],
   related: [
-    ['building', 'Business Term Loan', 'When the project is broader than a single asset purchase.', '/business-term-loan'],
-    ['cash', 'Working Capital Loan', 'Cover the operating costs of running the new equipment.', '/working-capital-loan'],
-    ['invoice', 'Invoice Financing', 'Turn the contracts the equipment wins into immediate cash.', '/invoice-financing']
+    ['building', 'Business Term Loan', 'When the project is broader than a single asset purchase.', 'termLoan'],
+    ['cash', 'Working Capital Loan', 'Cover the operating costs of running the new equipment.', 'workingCapital'],
+    ['invoice', 'Invoice Financing', 'Turn the contracts the equipment wins into immediate cash.', 'invoice']
   ],
   ctaH: 'Have a supplier quotation in hand?',
   ctaP: 'Send it across and we will come back with an indicative monthly figure for both hire purchase and leasing, usually the same day.'

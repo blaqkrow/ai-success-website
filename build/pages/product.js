@@ -1,8 +1,12 @@
 'use strict';
 const L = require('../layout.js');
-const { icon, tick, arrow, pageHero, ctaBand, acc } = L;
+const { SITE, ROUTES, href, icon, tick, arrow, pageHero, ctaBand, acc } = L;
 
-module.exports = function product(d) {
+module.exports = function product(d, t, lang) {
+  const pc = t.loans.productChrome;
+  const R = (k) => href(lang, ROUTES[k]);
+  const faqHeading = pc.faqHSuffix ? `${pc.faqH}${d.shortName}${pc.faqHSuffix}` : `${pc.faqH} ${d.shortName}`;
+
   const specs = `<section class="section section--tight" style="margin-top:-1px">
     <div class="wrap">
       <div class="grid g4">
@@ -24,9 +28,9 @@ module.exports = function product(d) {
         </div>
         <div class="reveal">
           <div class="card card--flat">
-            <h3>Best suited to</h3>
+            <h3>${d.suitedH || pc.suitedH || 'Best suited to'}</h3>
             <ul class="checklist" style="margin-top:16px">
-              ${d.suited.map(([s, t]) => `<li>${tick}<span><strong>${s}</strong>${t}</span></li>`).join('\n              ')}
+              ${d.suited.map(([s, x]) => `<li>${tick}<span><strong>${s}</strong>${x}</span></li>`).join('\n              ')}
             </ul>
           </div>
         </div>
@@ -51,10 +55,10 @@ module.exports = function product(d) {
     <div class="wrap">
       <div class="featrow">
         <div class="reveal">
-          <span class="eyebrow">Worked example</span>
+          <span class="eyebrow">${pc.workedBadge}</span>
           <h2 style="font-size:clamp(1.7rem,3vw,2.4rem)">${d.example.title}</h2>
           <p style="color:#b8cbe8;font-size:1.06rem">${d.example.blurb}</p>
-          <p style="font-size:.82rem;color:#8fb0dd">Illustrative only. Your own terms depend on credit assessment and are confirmed in writing before you accept.</p>
+          <p class="srcnote" style="color:#8fb0dd">${pc.workedNote}</p>
         </div>
         <div class="reveal">
           <div class="stats stats--2">
@@ -70,11 +74,11 @@ module.exports = function product(d) {
 
   const steps = `<section class="section">
     <div class="wrap">
-      <div class="shead"><h2>From application to funds</h2><div class="rule"></div></div>
+      <div class="shead"><h2>${pc.stepsH}</h2><div class="rule"></div></div>
       <div class="grid g4">
-        ${d.steps.map(([t, p], i) => `<div class="card reveal">
+        ${d.steps.map(([tt, p], i) => `<div class="card reveal">
           <div style="font-family:var(--display);font-size:2.5rem;font-weight:800;color:var(--blue-100);line-height:1">0${i + 1}</div>
-          <h3 style="margin-top:6px">${t}</h3>
+          <h3 style="margin-top:6px">${tt}</h3>
           <p>${p}</p>
         </div>`).join('\n        ')}
       </div>
@@ -83,7 +87,7 @@ module.exports = function product(d) {
 
   const faq = `<section class="section section--surface">
     <div class="wrap">
-      <div class="shead"><h2>Questions about ${d.shortName}</h2><div class="rule"></div></div>
+      <div class="shead"><h2>${faqHeading}</h2><div class="rule"></div></div>
       <div class="narrow mx-auto">
         ${d.faq.map(([q, a]) => acc(q, a)).join('\n        ')}
       </div>
@@ -92,13 +96,13 @@ module.exports = function product(d) {
 
   const related = `<section class="section section--tight">
     <div class="wrap">
-      <div class="shead" style="margin-bottom:34px"><h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">Also worth considering</h2></div>
+      <div class="shead" style="margin-bottom:34px"><h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">${pc.relatedH}</h2></div>
       <div class="grid g3">
-        ${d.related.map(([ic, t, p, href]) => `<a class="card reveal" href="${href}" style="display:block;color:inherit">
+        ${d.related.map(([ic, tt, p, key]) => `<a class="card reveal" href="${R(key)}" style="display:block;color:inherit">
           <div class="icon-sq">${icon(ic)}</div>
-          <h3>${t}</h3>
+          <h3>${tt}</h3>
           <p>${p}</p>
-          <p style="margin-top:12px;color:var(--blue-600);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase">Learn more &rarr;</p>
+          <p class="cardlink">${pc.learnMore} &rarr;</p>
         </a>`).join('\n        ')}
       </div>
     </div>
@@ -106,21 +110,23 @@ module.exports = function product(d) {
 
   return L.page({
     file: d.file,
+    route: ROUTES[d.key],
     active: 'loans',
+    t, lang,
     title: d.title,
     description: d.description,
     jsonld: {
       '@context': 'https://schema.org',
       '@type': 'FinancialProduct',
       name: d.name,
-      provider: { '@type': 'FinancialService', name: L.SITE.name, url: L.SITE.url },
+      provider: { '@type': 'FinancialService', name: SITE.name, url: SITE.url },
       description: d.description,
       areaServed: 'SG'
     },
     body: [
-      pageHero(d.name, d.h1, d.sub),
+      pageHero(t, lang, d.name, d.h1, d.sub),
       specs, overview, benefits, example, steps, faq, related,
-      ctaBand(d.ctaH, d.ctaP)
+      ctaBand(t, lang, d.ctaH, d.ctaP)
     ].join('\n')
   });
 };

@@ -1,6 +1,6 @@
 'use strict';
 const L = require('../layout.js');
-const { SITE, icon, tick, arrow, phoneIcon, ctaBand, card, testimonial } = L;
+const { SITE, ROUTES, href, icon, tick, arrow, phoneIcon, ctaBand, testimonial } = L;
 
 const heroArt = `<div class="hero__art" aria-hidden="true">
       <svg viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,9 +12,7 @@ const heroArt = `<div class="hero__art" aria-hidden="true">
           <linearGradient id="arw" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" stop-color="#0b4fc0"/><stop offset=".55" stop-color="#2b86f5"/><stop offset="1" stop-color="#8ecbff"/>
           </linearGradient>
-          <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="9"/>
-          </filter>
+          <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
         </defs>
         <g fill="url(#sky)">
           <rect x="20" y="330" width="58" height="190"/><rect x="88" y="286" width="44" height="234"/>
@@ -40,201 +38,251 @@ const heroArt = `<div class="hero__art" aria-hidden="true">
       </svg>
     </div>`;
 
-const hero = `<section class="hero circuit">
+module.exports = function home(t, lang) {
+  const c = t.home;
+  const R = (k) => href(lang, ROUTES[k]);
+
+  const hero = `<section class="hero circuit">
     <div class="hero__glow" aria-hidden="true"></div>
     ${heroArt}
     <div class="wrap">
       <div class="hero__grid">
         <div>
-          <span class="eyebrow">Smart SME loans for ambitious businesses</span>
-          <h1>Fuel your business.<br>Achieve <span class="gold">success.</span></h1>
-          <p class="hero__lede">Fast, flexible and hassle-free SME loans to help you seize opportunities and grow your business to the next level.</p>
+          <span class="eyebrow">${c.hero.eyebrow}</span>
+          <h1>${c.hero.h1a}<br>${c.hero.h1b} <span class="gold">${c.hero.h1gold}</span></h1>
+          <p class="hero__lede">${c.hero.lede}</p>
 
           <div class="trio">
-            <div class="trio__i">
-              <div class="trio__ic">${icon('bolt')}</div>
-              <div class="trio__t">Fast Approval</div>
-              <div class="trio__s">In 24 hours</div>
-            </div>
-            <div class="trio__i">
-              <div class="trio__ic">${icon('percent')}</div>
-              <div class="trio__t">Competitive Rates</div>
-              <div class="trio__s">From 2.88% p.a.</div>
-            </div>
-            <div class="trio__i">
-              <div class="trio__ic">${icon('handshake')}</div>
-              <div class="trio__t">Flexible Repayment</div>
-              <div class="trio__s">Up to 60 months</div>
-            </div>
+            ${c.hero.trio.map(([ic, tt, ss]) => `<div class="trio__i">
+              <div class="trio__ic">${icon(ic)}</div>
+              <div class="trio__t">${tt}</div>
+              <div class="trio__s">${ss}</div>
+            </div>`).join('\n            ')}
           </div>
 
           <div class="hero__actions">
-            <a class="btn btn--gold" href="/contact">Check Eligibility ${arrow}</a>
-            <a class="btn btn--ghost" href="${SITE.phoneHref}">Talk to an Advisor ${phoneIcon}</a>
+            <a class="btn btn--gold" href="${R('contact')}">${c.hero.ctaPrimary} ${arrow}</a>
+            <a class="btn btn--ghost" href="${SITE.phoneHref}">${c.hero.ctaSecondary} ${phoneIcon}</a>
           </div>
         </div>
 
-        <div class="offercard">
-          <div class="offercard__label">Loan amounts up to</div>
-          <div class="offercard__amt">$5 Million</div>
-          <div class="offercard__sub">for your business needs</div>
-          <hr>
-          <ul class="ticklist">
-            <li>${tick} Working Capital</li>
-            <li>${tick} Business Expansion</li>
-            <li>${tick} Equipment Financing</li>
-            <li>${tick} Cash Flow Support</li>
-            <li>${tick} Invoice Financing</li>
-          </ul>
+        <div class="calccard" id="hcalc">
+          <h2 class="calccard__h">${c.calc.title}</h2>
+          <p class="calccard__sub">${c.calc.sub}</p>
+
+          <div class="calcrow">
+            <label for="hcalc-amount">${c.calc.amountLabel}</label>
+            <output id="hcalc-amount-out" for="hcalc-amount">S$100,000</output>
+          </div>
+          <input class="rng" id="hcalc-amount" type="range" min="20000" max="1000000" step="10000" value="100000" aria-label="${c.calc.amountLabel}">
+
+          <div class="calcrow">
+            <label for="hcalc-months">${c.calc.tenureLabel}</label>
+            <output id="hcalc-months-out" for="hcalc-months">60 ${c.calc.months}</output>
+          </div>
+          <input class="rng" id="hcalc-months" type="range" min="6" max="60" step="6" value="60" aria-label="${c.calc.tenureLabel}">
+          <span hidden id="hcalc-months-word">${c.calc.months}</span>
+
+          <div class="calccard__result">
+            <div class="calccard__rlabel">${c.calc.resultLabel}</div>
+            <div class="calccard__amt" id="hcalc-monthly">S$1,907</div>
+          </div>
+
+          <a class="btn btn--gold btn--wide" href="${R('contact')}">${c.calc.cta} ${arrow}</a>
+          <p class="calccard__note">${c.calc.note}</p>
         </div>
       </div>
     </div>
   </section>`;
 
-const why = `<section class="section section--surface">
+  const why = `<section class="section section--surface">
     <div class="wrap">
       <div class="shead">
-        <h2>Why businesses choose<br><span class="brandmark">AI <em>Success</em></span></h2>
+        <h2>${c.why.h}<br><span class="brandmark">${c.why.brand}</span></h2>
         <div class="rule"></div>
       </div>
       <div class="grid g5">
-        ${card('stopwatch', 'Quick &amp; Easy Application', 'Simple process, minimal paperwork &mdash; most applications take under five minutes.')}
-        ${card('medal', 'High Approval Rate', 'We say YES when banks say NO, because we read your business, not just a score.')}
-        ${card('shield', 'No Hidden Fees', 'Transparent terms, no surprises. Every cost is on the table before you sign.')}
-        ${card('headset', 'Dedicated Support', 'Expert advisors who understand your industry and stay with you after drawdown.')}
-        ${card('chartup', 'Built For Your Growth', 'Facilities that scale with your business as revenue and ambition increase.')}
+        ${c.why.cards.map(([ic, h, p]) => L.card(ic, h, p)).join('\n        ')}
       </div>
     </div>
   </section>`;
 
-const products = `<section class="section">
+  const products = `<section class="section">
     <div class="wrap">
       <div class="shead">
-        <span class="badge">Loan Solutions</span>
-        <h2>Financing shaped around your next move</h2>
-        <p>Four core facilities, one application. Our advisors match you to the structure that fits your cash-flow cycle &mdash; not the other way round.</p>
+        <span class="badge">${c.products.badge}</span>
+        <h2>${c.products.h}</h2>
+        <p>${c.products.p}</p>
         <div class="rule"></div>
       </div>
       <div class="grid g4">
-        ${[
-          ['cash', 'Working Capital Loan', 'Up to S$500,000', 'Smooth out payroll, rent and supplier payments through seasonal dips.', '/working-capital-loan'],
-          ['building', 'Business Term Loan', 'Up to S$5 million', 'A lump sum with fixed monthly repayments for expansion and big moves.', '/business-term-loan'],
-          ['invoice', 'Invoice Financing', 'Up to 90% of invoice', 'Turn 60 to 120-day payment terms into cash within 48 hours.', '/invoice-financing'],
-          ['gear', 'Equipment Financing', 'Up to 100% of asset', 'Acquire machinery, vehicles and fit-outs without draining reserves.', '/equipment-financing']
-        ].map(([ic, t, amt, d, href]) => `<a class="card reveal" href="${href}" style="display:block;color:inherit">
+        ${c.products.items.map(([ic, tt, amt, d, key]) => `<a class="card reveal" href="${R(key)}" style="display:block;color:inherit">
           <div class="icon-sq">${icon(ic)}</div>
           <span class="badge badge--gold">${amt}</span>
-          <h3>${t}</h3>
+          <h3>${tt}</h3>
           <p>${d}</p>
-          <p style="margin-top:14px;color:var(--blue-600);font-weight:800;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase">Learn more &rarr;</p>
+          <p class="cardlink">${t.common.learnMore} &rarr;</p>
         </a>`).join('\n        ')}
       </div>
     </div>
   </section>`;
 
-const how = `<section class="section section--blue circuit">
+  const wcl = `<section class="section section--blue circuit">
     <div class="wrap">
-      <div class="shead"><h2>How it works</h2><div class="rule"></div></div>
+      <div class="shead"><h2>${c.wcl.h}</h2><p style="color:#b8cbe8">${c.wcl.p}</p><div class="rule"></div></div>
+      <div class="grid g3">
+        ${c.wcl.items.map(([ic, h, p]) => `<div class="card card--dark card--center reveal">
+          <div class="icon-circle">${icon(ic)}</div>
+          <h3>${h}</h3>
+          <p>${p}</p>
+        </div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>`;
+
+  const gov = `<section class="section section--surface">
+    <div class="wrap">
+      <div class="shead">
+        <span class="badge badge--gold">${c.gov.badge}</span>
+        <h2>${c.gov.h}</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="featrow" style="align-items:start">
+        <div class="grid g2 reveal" style="gap:20px">
+          ${c.gov.cards.map((k) => `<div class="govcard">
+            <div class="icon-sq">${icon(k.icon)}</div>
+            <h3>${k.title}</h3>
+            <p class="govcard__period">${k.period}</p>
+            <ul class="govlist">${k.points.map((pt) => `<li>${pt}</li>`).join('')}</ul>
+          </div>`).join('\n          ')}
+        </div>
+        <div class="reveal">
+          ${c.gov.body.map((p) => `<p class="lead">${p}</p>`).join('\n          ')}
+          <a class="btn btn--blue" href="${R('contact')}">${c.gov.cta} ${arrow}</a>
+          <p class="srcnote">${c.gov.source}</p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+
+  const institutions = `<section class="section">
+    <div class="wrap">
+      <div class="shead"><h2>${c.institutions.h}</h2><div class="rule"></div></div>
+      <ul class="fis reveal">
+        ${c.institutions.items.map((f) => `<li class="fi"><span class="fi__name">${f.name}</span>${f.cn ? `<span class="fi__cn">${f.cn}</span>` : ''}</li>`).join('\n        ')}
+      </ul>
+      <p class="center srcnote" style="max-width:70ch;margin:26px auto 0">${c.institutions.caption}</p>
+    </div>
+  </section>`;
+
+  const how = `<section class="section section--blue circuit">
+    <div class="wrap">
+      <div class="shead"><h2>${c.how.h}</h2><div class="rule"></div></div>
       <div class="steps">
-        ${[
-          ['form', 'Apply Online', 'Fill in a simple form in less than 5 minutes.'],
-          ['clock', 'Get Quick Approval', 'Receive an indicative offer within 24 hours.'],
-          ['docsign', 'Sign &amp; Disbursement', 'E-sign and receive funds fast.'],
-          ['rocket', 'Grow Your Business', 'Focus on what matters most &mdash; growing your business!']
-        ].map(([ic, t, d], i) => `<div class="step reveal">
+        ${c.how.steps.map(([ic, tt, d], i) => `<div class="step reveal">
           <div class="step__ring"><span class="step__num">${i + 1}</span>${icon(ic)}</div>
-          <h4>${t}</h4>
+          <h4>${tt}</h4>
           <p>${d}</p>
         </div>`).join('\n        ')}
       </div>
     </div>
   </section>`;
 
-const results = `<section class="section section--blue circuit" style="padding-top:0">
+  const results = `<section class="section section--blue circuit" style="padding-top:0">
     <div class="wrap">
       <div class="grid g-results">
         <div class="reveal">
-          <h2 style="font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:20px">Real businesses.<br><span style="color:var(--gold)">Real results.</span></h2>
+          <h2 style="font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:20px">${c.results.h1}<br><span style="color:var(--gold)">${c.results.h2}</span></h2>
           <div class="quote">
-            <p>AI Success helped us secure the funds we needed to expand our operations. The process was fast, easy and hassle-free.</p>
+            <p>${c.results.quote}</p>
             <div class="byline">
-              <span class="avatar">SL</span>
-              <span><strong>Sarah Lim</strong><span>Founder, The Green Pantry</span></span>
+              <span class="avatar">${c.results.ini}</span>
+              <span><strong>${c.results.who}</strong><span>${c.results.role}</span></span>
             </div>
           </div>
         </div>
 
         <div class="stats reveal">
-          <div class="stat">
-            ${icon('users')}
-            <div class="stat__n"><span data-count="10000" data-suffix="+">10,000+</span></div>
-            <div class="stat__l">Businesses Financed</div>
-          </div>
-          <div class="stat">
-            ${icon('dollar')}
-            <div class="stat__n"><span data-count="1" data-prefix="$" data-suffix="B+">$1B+</span></div>
-            <div class="stat__l">Loans Disbursed</div>
-          </div>
-          <div class="stat">
-            ${icon('thumb')}
-            <div class="stat__n"><span data-count="98" data-suffix="%">98%</span></div>
-            <div class="stat__l">Customer Satisfaction</div>
-          </div>
+          ${c.results.stats.map(([ic, n, suf, pre, l]) => `<div class="stat">
+            ${icon(ic)}
+            <div class="stat__n"><span data-count="${n}" data-prefix="${pre}" data-suffix="${suf}">${pre}${n}${suf}</span></div>
+            <div class="stat__l">${l}</div>
+          </div>`).join('\n          ')}
         </div>
 
         <div class="ctapanel reveal">
-          <h3>Ready to take your business further?</h3>
-          <p>Get the right financing solution tailored to your needs.</p>
-          <a class="btn btn--gold" href="/contact">Apply Now ${arrow}</a>
-          <a class="btn btn--outline" href="${SITE.phoneHref}">${phoneIcon} Call us: ${SITE.phone}</a>
+          <h3>${c.results.panelH}</h3>
+          <p>${c.results.panelP}</p>
+          <a class="btn btn--gold" href="${R('contact')}">${c.results.panelCta} ${arrow}</a>
+          <a class="btn btn--outline" href="${SITE.phoneHref}">${phoneIcon} ${c.results.panelCall} ${SITE.phone}</a>
         </div>
       </div>
     </div>
   </section>`;
 
-const industries = `<section class="section section--tight">
+  const video = `<section class="section section--surface">
     <div class="wrap">
-      <p class="center" style="font-size:.82rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-600);margin-bottom:26px">Trusted by SMEs across various industries</p>
-      <div class="industries">
-        ${[
-          ['utensils', 'F&amp;B', 'Solutions'], ['chip', 'Tech', 'Innovations'], ['leaf', 'Green', 'Solutions'],
-          ['building', 'Build', 'Right'], ['truck', 'Logis', 'Express'], ['bag', 'Retail', 'Hub']
-        ].map(([ic, a, b]) => `<div class="ind">${icon(ic)}<span><b>${a}</b><span>${b}</span></span></div>`).join('\n        ')}
+      <div class="shead">
+        <span class="badge">${c.video.badge}</span>
+        <h2>${c.video.h}</h2>
+        <p>${c.video.p}</p>
+        <div class="rule"></div>
+      </div>
+      <div class="videobox reveal">
+        ${c.video.src
+          ? `<video controls preload="metadata"${c.video.poster ? ` poster="${c.video.poster}"` : ''} playsinline>
+          <source src="${c.video.src}" type="video/mp4">
+        </video>`
+          : `<div class="videobox__ph">
+          <span class="videobox__ic">${icon('play')}</span>
+          <p class="videobox__t">${c.video.placeholder}</p>
+          <p class="videobox__n">${c.video.placeholderNote}</p>
+        </div>`}
       </div>
     </div>
   </section>`;
 
-const voices = `<section class="section section--surface">
+  const industries = `<section class="section section--tight">
+    <div class="wrap">
+      <p class="center eyebrow-flat">${c.industries.h}</p>
+      <div class="industries">
+        ${c.industries.items.map(([ic, a, b]) => `<div class="ind">${icon(ic)}<span><b>${a}</b><span>${b}</span></span></div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>`;
+
+  const voices = `<section class="section section--surface">
     <div class="wrap">
       <div class="shead">
-        <span class="badge">Success Stories</span>
-        <h2>What Singapore SMEs say</h2>
+        <span class="badge">${c.voices.badge}</span>
+        <h2>${c.voices.h}</h2>
         <div class="rule"></div>
       </div>
       <div class="grid g3">
-        ${testimonial('We were quoted six weeks by our bank. AI Success had an indicative offer on the table the next morning and funds in the account inside a week.', 'RT', 'Raymond Tan', 'Managing Director, Precision Metalworks')}
-        ${testimonial('Invoice financing changed how we bid for jobs. We stopped turning away contracts just because payment terms were 90 days.', 'NK', 'Nurul Kamal', 'Director, Skyline Interiors')}
-        ${testimonial('The advisor actually understood our seasonality and structured repayments around it. That is not something a portal can do.', 'JW', 'Jason Wong', 'Owner, Harbour Cafe Group')}
+        ${c.voices.items.map(([q, ini, n, r]) => testimonial(q, ini, n, r)).join('\n        ')}
       </div>
-      <p class="center" style="margin-top:34px"><a class="btn btn--outline" href="/success-stories">Read the full stories ${arrow}</a></p>
+      <p class="center" style="margin-top:34px"><a class="btn btn--outline" href="${R('stories')}">${c.voices.cta} ${arrow}</a></p>
     </div>
   </section>`;
 
-module.exports = L.page({
-  file: 'index.html',
-  active: 'home',
-  title: 'AI Success Pte. Ltd. | Smart SME Loans in Singapore — Fast Approval, Real Growth',
-  description: 'Fast, flexible SME loans in Singapore. Working capital, term loans, invoice and equipment financing up to S$5 million. Approval in 24 hours, rates from 2.88% p.a.',
-  jsonld: {
-    '@context': 'https://schema.org',
-    '@type': 'FinancialService',
-    name: SITE.name,
-    slogan: SITE.tagline,
-    url: SITE.url,
-    telephone: '+65 8857 8585',
-    email: SITE.email,
-    areaServed: 'SG',
-    address: { '@type': 'PostalAddress', streetAddress: '200 Jln Sultan, #03-31C', addressLocality: 'Singapore', postalCode: '199018', addressCountry: 'SG' }
-  },
-  body: [hero, why, products, how, results, industries, voices, ctaBand()].join('\n')
-});
+  return L.page({
+    file: 'index.html',
+    route: ROUTES.home,
+    active: 'home',
+    t, lang,
+    title: c.meta.title,
+    description: c.meta.description,
+    jsonld: {
+      '@context': 'https://schema.org',
+      '@type': 'FinancialService',
+      name: SITE.name,
+      slogan: t.tagline,
+      url: SITE.url,
+      telephone: '+65 8857 8585',
+      email: SITE.email,
+      areaServed: 'SG',
+      address: { '@type': 'PostalAddress', streetAddress: '200 Jln Sultan, #03-31C', addressLocality: 'Singapore', postalCode: '199018', addressCountry: 'SG' }
+    },
+    body: [hero, why, products, wcl, gov, institutions, how, results, video, industries, voices, ctaBand(t, lang)].join('\n')
+  });
+};

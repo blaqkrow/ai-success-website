@@ -137,6 +137,44 @@
     recalc();
   }
 
+  /* Hero loan calculator (homepage) */
+  var hcalc = document.getElementById('hcalc');
+  if (hcalc) {
+    var HERO_FLAT_RATE = 2.88; /* % p.a., flat basis - matches the advertised headline rate */
+    var hAmount = document.getElementById('hcalc-amount');
+    var hMonths = document.getElementById('hcalc-months');
+    var hAmountOut = document.getElementById('hcalc-amount-out');
+    var hMonthsOut = document.getElementById('hcalc-months-out');
+    var hMonthly = document.getElementById('hcalc-monthly');
+    var monthsWordEl = document.getElementById('hcalc-months-word');
+    var monthsWord = monthsWordEl ? monthsWordEl.textContent : 'months';
+    var sgd = function (n) { return 'S$' + Math.round(n).toLocaleString('en-SG'); };
+
+    /* Paint the filled portion of each track */
+    var paint = function (el) {
+      var min = parseFloat(el.min), max = parseFloat(el.max);
+      var pct = ((parseFloat(el.value) - min) / (max - min)) * 100;
+      el.style.setProperty('--pct', pct + '%');
+    };
+
+    var hRecalc = function () {
+      var p = parseFloat(hAmount.value) || 0;
+      var m = parseInt(hMonths.value, 10) || 12;
+      var interest = p * (HERO_FLAT_RATE / 100) * (m / 12);
+      hAmountOut.textContent = sgd(p);
+      hMonthsOut.textContent = m + ' ' + monthsWord;
+      hMonthly.textContent = sgd((p + interest) / m);
+      paint(hAmount);
+      paint(hMonths);
+    };
+
+    [hAmount, hMonths].forEach(function (el) {
+      el.addEventListener('input', hRecalc);
+      el.addEventListener('change', hRecalc);
+    });
+    hRecalc();
+  }
+
   /* Footer year */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();
