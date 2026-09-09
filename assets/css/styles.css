@@ -544,3 +544,7 @@ td strong{color:var(--ink)}
   .videobox{aspect-ratio:4/3}
 }
 .caselabel{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-600);margin-bottom:4px}
+
+/* A real video sizes to its own aspect ratio; only the placeholder needs a fixed box. */
+.videobox--v{aspect-ratio:auto}
+.videobox--v video{height:auto;object-fit:fill}

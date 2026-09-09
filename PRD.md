@@ -134,7 +134,7 @@ production.
 | D5 | Low | The Vercel project is not linked to the GitHub repo, so deploys are manual and there is no preview/rollback path. |
 | D6 | **High** | The homepage names fifteen financial institutions (DBS, UOB, HSBC, Maybank, …). These are third-party trademarks and the claim of scheme participation is unverified. They are currently rendered as **text, not logos** — no logo files were supplied and none should be copied from a competitor's site. Confirm the participant list against Enterprise Singapore's published source, and obtain each institution's permission (or the scheme's brand guidance) before using real logos. |
 | D7 | **High** | The government-scheme figures on the homepage — 70% risk-share to March 2027, the Nov 2026 SME Cash Grant, the S$500/S$2,500 amounts — were transcribed from a competitor's page and have not been verified against Enterprise Singapore. Publishing incorrect scheme terms on a financing site is a real liability. Verify before promoting. |
-| D8 | Low | The company video section renders a placeholder. No video file was supplied; drop it at `assets/video/company.mp4` and set `video.src` in both language packs. |
+| ~~D8~~ | &mdash; | ~~The company video section renders a placeholder.~~ **Resolved 9 Sep 2026** &mdash; the supplied 39-second spokesperson video is live on both language homepages, served from `assets/video/company.mp4` with a poster frame. See R23 for the follow-up. |
 
 ---
 
@@ -179,6 +179,8 @@ do its job. **P2** is the next horizon.
 | R20 | CMS or structured content source, once someone other than a developer needs to edit copy. |
 | ~~R21~~ | ~~Simplified Chinese translation.~~ **Shipped 9 Sep 2026** — full site at `/zh`, EN/中文 toggle, hreflang alternates. Translation is machine-produced and should get a native review before it is promoted. |
 | R22 | Enhance the estimator to show effective interest rate alongside flat rate — the exact comparison the `/resources` guides argue is the only honest one. |
+| R23 | Captions and a transcript for the company video. It carries spoken audio with no text alternative, which is an accessibility gap and loses viewers who watch muted — the majority on mobile. A `.vtt` track alongside the MP4 covers both. |
+| R24 | Host the video off the main bundle. At 7.7 MB it is by far the largest asset on the site; `preload="metadata"` keeps it off the critical path, but a streaming host would serve it better as traffic grows. |
 
 ---
 

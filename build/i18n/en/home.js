@@ -116,9 +116,9 @@ module.exports = {
   video: {
     badge: 'Watch',
     h: 'Meet AI Success',
-    p: 'A two-minute introduction to how we work, who we work with, and what happens after you apply.',
-    src: null,
-    poster: null,
+    p: 'A short introduction to how we work, who we work with, and what happens after you apply.',
+    src: '/assets/video/company.mp4',
+    poster: '/assets/video/company-poster.jpg',
     placeholder: 'Company video coming soon.',
     placeholderNote: 'Drop the file at <code>assets/video/company.mp4</code> and set <code>video.src</code> in the language pack to publish it.'
   },

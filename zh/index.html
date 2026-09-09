@@ -403,15 +403,13 @@
       <div class="shead">
         <span class="badge">影片</span>
         <h2>认识 AI Success</h2>
-        <p>两分钟带您了解我们的运作方式、服务对象，以及您提交申请之后会发生什么。</p>
+        <p>简短影片，带您了解我们的运作方式、服务对象，以及您提交申请之后会发生什么。</p>
         <div class="rule"></div>
       </div>
-      <div class="videobox reveal">
-        <div class="videobox__ph">
-          <span class="videobox__ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M10 8.5v7l6-3.5-6-3.5Z"/></svg></span>
-          <p class="videobox__t">公司影片即将上线。</p>
-          <p class="videobox__n">将影片放到 <code>assets/video/company.mp4</code>，并在语言包中设定 <code>video.src</code> 即可发布。</p>
-        </div>
+      <div class="videobox reveal videobox--v">
+        <video controls preload="metadata" poster="/assets/video/company-poster.jpg" playsinline>
+          <source src="/assets/video/company.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>

@@ -112,9 +112,9 @@ module.exports = {
   video: {
     badge: '影片',
     h: '认识 AI Success',
-    p: '两分钟带您了解我们的运作方式、服务对象，以及您提交申请之后会发生什么。',
-    src: null,
-    poster: null,
+    p: '简短影片，带您了解我们的运作方式、服务对象，以及您提交申请之后会发生什么。',
+    src: '/assets/video/company.mp4',
+    poster: '/assets/video/company-poster.jpg',
     placeholder: '公司影片即将上线。',
     placeholderNote: '将影片放到 <code>assets/video/company.mp4</code>，并在语言包中设定 <code>video.src</code> 即可发布。'
   },

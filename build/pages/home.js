@@ -228,7 +228,7 @@ module.exports = function home(t, lang) {
         <p>${c.video.p}</p>
         <div class="rule"></div>
       </div>
-      <div class="videobox reveal">
+      <div class="videobox reveal${c.video.src ? ' videobox--v' : ''}">
         ${c.video.src
           ? `<video controls preload="metadata"${c.video.poster ? ` poster="${c.video.poster}"` : ''} playsinline>
           <source src="${c.video.src}" type="video/mp4">
