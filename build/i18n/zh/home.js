@@ -100,12 +100,13 @@ module.exports = {
   institutions: {
     h: '中小企业融资机构',
     caption: '以下为参与新加坡企业发展局「中小企业营运资金贷款」计划的部分金融机构。',
+    trademark: '各机构标志均为其所有者的商标，仅作识别用途。',
     items: [
-      { name: 'DBS', cn: '星展银行' }, { name: 'OCBC Bank', cn: '华侨银行' }, { name: 'UOB', cn: '大华银行' },
-      { name: 'Maybank', cn: '马来亚银行' }, { name: 'Standard Chartered', cn: '渣打银行' }, { name: 'HSBC', cn: '汇丰银行' },
-      { name: 'CIMB Bank', cn: '联昌国际银行' }, { name: 'RHB', cn: '兴业银行' }, { name: 'GXS' },
-      { name: 'ORIX', cn: '欧力士' }, { name: 'Hong Leong Finance', cn: '丰隆财务' }, { name: 'ETHOZ' },
-      { name: 'Singapura Finance' }, { name: 'Sing Investments &amp; Finance' }, { name: 'IFS Capital' }
+      { name: 'DBS', logo: 'dbs.svg', cn: '星展银行' }, { name: 'OCBC Bank', logo: 'ocbc.svg', cn: '华侨银行' }, { name: 'UOB', logo: 'uob.svg', cn: '大华银行' },
+      { name: 'Maybank', logo: 'maybank.svg', cn: '马来亚银行' }, { name: 'Standard Chartered', logo: 'scb.svg', cn: '渣打银行' }, { name: 'HSBC', logo: 'hsbc.svg', cn: '汇丰银行' },
+      { name: 'CIMB Bank', logo: 'cimb.svg', cn: '联昌国际银行' }, { name: 'RHB', logo: 'rhb.svg', cn: '兴业银行' }, { name: 'GXS', logo: 'gxs.svg' },
+      { name: 'ORIX', logo: 'orix.svg', cn: '欧力士' }, { name: 'Hong Leong Finance', logo: 'hong-leong-finance.png', cn: '丰隆财务' }, { name: 'ETHOZ', logo: 'ethoz.png' },
+      { name: 'Singapura Finance', logo: 'singapura-finance.png' }, { name: 'Sing Investments &amp; Finance', logo: 'sing-investments.png' }, { name: 'IFS Capital', logo: 'ifs-capital.svg' }
     ]
   },
 

@@ -553,3 +553,14 @@ td strong{color:var(--ink)}
 /* A real video sizes to its own aspect ratio; only the placeholder needs a fixed box. */
 .videobox--v{aspect-ratio:auto}
 .videobox--v video{height:auto;object-fit:fill}
+
+/* ---------- Financing institution logos ---------- */
+.fi{min-height:98px;padding:18px 16px;gap:8px}
+.fi__logo{display:block;max-height:46px;max-width:82%;width:auto;height:auto;object-fit:contain}
+/* Raster logos arrive with an opaque light background; multiply hides it on a white tile. */
+.fi__logo--raster{mix-blend-mode:multiply}
+.fi__cn{font-size:.74rem;color:var(--muted);margin:0;line-height:1.2}
+@media (max-width:680px){
+  .fi{min-height:82px;padding:14px 10px}
+  .fi__logo{max-height:36px;max-width:86%}
+}

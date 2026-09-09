@@ -169,9 +169,9 @@ module.exports = function home(t, lang) {
     <div class="wrap">
       <div class="shead"><h2>${c.institutions.h}</h2><div class="rule"></div></div>
       <ul class="fis reveal">
-        ${c.institutions.items.map((f) => `<li class="fi"><span class="fi__name">${f.name}</span>${f.cn ? `<span class="fi__cn">${f.cn}</span>` : ''}</li>`).join('\n        ')}
+        ${c.institutions.items.map((f) => `<li class="fi"><img class="fi__logo${/\.png$/.test(f.logo) ? ' fi__logo--raster' : ''}" src="/assets/img/logos/${f.logo}" alt="${f.name.replace(/&amp;/g, '&')}" loading="lazy" decoding="async">${f.cn ? `<span class="fi__cn">${f.cn}</span>` : ''}</li>`).join('\n        ')}
       </ul>
-      <p class="center srcnote" style="max-width:70ch;margin:26px auto 0">${c.institutions.caption}</p>
+      <p class="center srcnote" style="max-width:70ch;margin:26px auto 0">${c.institutions.caption}<br>${c.institutions.trademark}</p>
     </div>
   </section>`;
 

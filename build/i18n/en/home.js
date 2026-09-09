@@ -104,11 +104,12 @@ module.exports = {
   institutions: {
     h: 'SME financing institutions',
     caption: 'These are some of the participating financial institutions in the Enterprise Singapore SME Working Capital Loan.',
+    trademark: 'Logos are trademarks of their respective owners and are shown for identification only.',
     items: [
-      { name: 'DBS' }, { name: 'OCBC Bank' }, { name: 'UOB' }, { name: 'Maybank' },
-      { name: 'Standard Chartered' }, { name: 'HSBC' }, { name: 'CIMB Bank' }, { name: 'RHB' },
-      { name: 'GXS' }, { name: 'ORIX' }, { name: 'Hong Leong Finance' }, { name: 'ETHOZ' },
-      { name: 'Singapura Finance' }, { name: 'Sing Investments &amp; Finance' }, { name: 'IFS Capital' }
+      { name: 'DBS', logo: 'dbs.svg' }, { name: 'OCBC Bank', logo: 'ocbc.svg' }, { name: 'UOB', logo: 'uob.svg' }, { name: 'Maybank', logo: 'maybank.svg' },
+      { name: 'Standard Chartered', logo: 'scb.svg' }, { name: 'HSBC', logo: 'hsbc.svg' }, { name: 'CIMB Bank', logo: 'cimb.svg' }, { name: 'RHB', logo: 'rhb.svg' },
+      { name: 'GXS', logo: 'gxs.svg' }, { name: 'ORIX', logo: 'orix.svg' }, { name: 'Hong Leong Finance', logo: 'hong-leong-finance.png' }, { name: 'ETHOZ', logo: 'ethoz.png' },
+      { name: 'Singapura Finance', logo: 'singapura-finance.png' }, { name: 'Sing Investments &amp; Finance', logo: 'sing-investments.png' }, { name: 'IFS Capital', logo: 'ifs-capital.svg' }
     ]
   },
 
