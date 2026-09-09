@@ -30,7 +30,9 @@ const ROUTES = {
 };
 
 /* Prefix a route for the given language. */
-const href = (lang, route) => (lang === 'zh' ? (route === '/' ? '/zh/' : '/zh' + route) : route);
+/* vercel.json sets trailingSlash:false, so the zh home is /zh (not /zh/) -
+   linking to /zh/ would cost every visitor a 308 redirect. */
+const href = (lang, route) => (lang === 'zh' ? (route === '/' ? '/zh' : '/zh' + route) : route);
 
 /* ---------- Logo ---------- */
 const LOGO = `<svg viewBox="0 0 62 46" aria-hidden="true" focusable="false">

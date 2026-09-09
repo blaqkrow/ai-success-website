@@ -3,7 +3,7 @@
   <url>
     <loc>https://aisuccess.sg/</loc>
     <xhtml:link rel="alternate" hreflang="en-SG" href="https://aisuccess.sg/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aisuccess.sg/zh/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aisuccess.sg/zh"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -71,9 +71,9 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aisuccess.sg/zh/</loc>
+    <loc>https://aisuccess.sg/zh</loc>
     <xhtml:link rel="alternate" hreflang="en-SG" href="https://aisuccess.sg/"/>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aisuccess.sg/zh/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aisuccess.sg/zh"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
