@@ -1,4 +1,17 @@
 'use strict';
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+
+/* vercel.json serves /assets/* with a one-year immutable cache, so every asset URL
+   must change whenever its content does. A short content hash on the query string
+   does that; browsers and the Vercel edge both key their caches on the full URL. */
+const assetUrl = (rel) => {
+  const hash = crypto.createHash('md5').update(fs.readFileSync(path.join(__dirname, '..', rel))).digest('hex').slice(0, 10);
+  return '/' + rel + '?v=' + hash;
+};
+const CSS_URL = assetUrl('assets/css/styles.css');
+const JS_URL = assetUrl('assets/js/main.js');
 
 const SITE = {
   name: 'AI Success Pte. Ltd.',
@@ -259,7 +272,7 @@ function page({ file, route, title, description, active, body, jsonld, t, lang }
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?${fontFamilies}&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="${CSS_URL}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
 <body>
@@ -279,7 +292,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 ${body}
 </main>
 ${footer(t, lang)}
-<script src="/assets/js/main.js" defer></script>
+<script src="${JS_URL}" defer></script>
 </body>
 </html>
 `;
@@ -318,6 +331,6 @@ const testimonial = (quote, initials, name, role) => `<div class="tcard reveal">
         </div>`;
 
 module.exports = {
-  SITE, LANGS, ROUTES, href, LOGO, icon, tick, arrow, phoneIcon,
+  SITE, LANGS, ROUTES, href, CSS_URL, JS_URL, LOGO, icon, tick, arrow, phoneIcon,
   page, pageHero, ctaBand, card, featCard, acc, testimonial
 };
